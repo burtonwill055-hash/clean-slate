@@ -1,6 +1,8 @@
 # Clean Slate
 
-A calm, local-first desktop app for quitting bad habits. Built with Python, PyQt6 and SQLite — no accounts, no cloud, no telemetry.
+A calm, local-first tracker for quitting bad habits. The desktop app is built
+with Python, PyQt6 and SQLite; the Android app uses Kivy and the same SQLite
+schema and streak math. No accounts, no cloud, no telemetry.
 
 ![Clean Slate](docs/screenshot.png)
 
@@ -16,13 +18,28 @@ A calm, local-first desktop app for quitting bad habits. Built with Python, PyQt
 
 ## Download (Linux)
 
-Don't want to set up Python? Grab the portable build from the [latest release](https://github.com/burtonwill055-hash/clean-slate/releases/latest):
+Don't want to set up Python? Grab the portable build from the [v1.0.0 release](https://github.com/burtonwill055-hash/clean-slate/releases/tag/v1.0.0):
 
 ```
 clean-slate-1.0.0-linux-x86_64.tar.gz
 ```
 
 Extract it and run `./clean-slate`. It bundles Python, PyQt6 and Qt, so no system packages are needed. There is also an optional `install-menu.sh` inside the folder.
+
+## Android
+
+The Android app lives in [`mobile/`](mobile/) and is built with Kivy. It has the
+same Today / History / Habits flow, stores everything locally, and needs no
+Android permissions.
+
+- **Requirements:** Android 7.0+ on a 64-bit ARM phone.
+- **Download:** `clean-slate-1.0.0-android-arm64-debug.apk` from the
+  [Android v1.0.0 release](https://github.com/burtonwill055-hash/clean-slate/releases/tag/android-v1.0.0).
+- **Install:** open the APK and allow installs from your browser or file
+  manager, or run `adb install -r clean-slate-1.0.0-android-arm64-debug.apk`.
+
+This is a debug-signed APK for direct installation; it is not on Google Play.
+Build and development notes are in [`mobile/README.md`](mobile/README.md).
 
 ## Run it
 
@@ -84,6 +101,7 @@ clean_slate/
   widgets.py    heatmap, charts, rings, rows and layout helpers
   theme.py      palette and global stylesheet
   assets/       app icon and dropdown chevron
+mobile/         Android app (Kivy, same storage/streak logic)
 run.sh          launcher
 install.sh      optional desktop-menu installer
 ```
@@ -105,6 +123,15 @@ QT_QPA_PLATFORM=offscreen python3 dev/screenshot.py   # writes /tmp/opencode/cle
 ```
 
 `dev/` also contains layout and ASCII-preview helpers used while building the UI.
+
+For the Android app:
+
+```bash
+cd mobile
+xvfb-run -a -s "-screen 0 420x900x24" .venv/bin/python dev/test_ui.py
+```
+
+See [`mobile/README.md`](mobile/README.md) for the APK build steps.
 
 ## License
 
