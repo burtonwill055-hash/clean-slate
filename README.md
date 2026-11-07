@@ -14,6 +14,16 @@ A calm, local-first desktop app for quitting bad habits. Built with Python, PyQt
 - **Undo last slip** and per-entry deletion for honest bookkeeping.
 - **Everything stored locally** in a single SQLite file.
 
+## Download (Linux)
+
+Don't want to set up Python? Grab the portable build from the [latest release](https://github.com/burtonwill055-hash/clean-slate/releases/latest):
+
+```
+clean-slate-1.0.0-linux-x86_64.tar.gz
+```
+
+Extract it and run `./clean-slate`. It bundles Python, PyQt6 and Qt, so no system packages are needed. There is also an optional `install-menu.sh` inside the folder.
+
 ## Run it
 
 Requires Python 3.10+ with PyQt6 (`python3 -c "import PyQt6"` to check). If it is missing:
